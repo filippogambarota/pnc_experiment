@@ -2,12 +2,6 @@ function [datastruct] = savedata(exp_table, subjectID, noise_level, final_noise,
     
     %% Creating Folders
     
-    % Calibration data folder
-    
-    if ~exist("calibration_data", 'dir')
-        mkdir("calibration_data")
-    end
-    
     % CSV folder
     
     if ~exist("calibration_data\csv", 'dir')
@@ -41,4 +35,4 @@ function [datastruct] = savedata(exp_table, subjectID, noise_level, final_noise,
     savefilename = sprintf('calibration_data/csv/S%d.txt', subjectID);
     writetable(csv_table, savefilename);
 
-    disp("Dati salvati!")
+    disp("Dati MATLAB salvati!")
