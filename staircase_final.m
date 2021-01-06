@@ -215,6 +215,8 @@ DrawFormattedText(w1, 'Questo è un esempio di un volti che ti potranno essere pr
 DrawFormattedText(w1, 'Se è tutto chiaro premi la barra spaziatrice per cominciare.', 'center', center(2) + 300, 255);
 Screen('Flip', w1);
 
+Screen('Close', [target_test_neutral, target_test_fear]) % close textures
+
 KbStrokeWait;
 
 % Starting Trials
@@ -381,6 +383,8 @@ while ~staircase.stop
     
     % Intertrial Interval %
     WaitSecs(intertrial);
+    
+    Screen('Close', [target, imageTexture]) % close textures for target and mask
     
 end
 Screen('Close', w1);
