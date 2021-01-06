@@ -138,6 +138,13 @@ staircase = PAL_AMUD_setupUD('up', 1, 'down', 1, 'stepsizeup', step_noise*step_r
 % increased by a step-down delta. the step-down delta comes from the
 % equation step-up delta * ratio (0.871)
 
+%% Preallocation vector
+
+resp_emotion = zeros(1000, 1);
+resp_visibility = zeros(1000, 1);
+id_subj = zeros(1000, 1);
+noise_level = zeros(1000, 1);
+
 %%% ------------------------------------------------------------------------------------------------------------------------ %%%
 %%% ------------------------------------------------------------------------------------------------------------------------ %%%
 
