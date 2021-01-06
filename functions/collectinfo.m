@@ -1,15 +1,18 @@
 function [subjectID, stop] = collectinfo()
 subjectID = input('Numero Partecipante (0 per terminare): ');
 stop = false;
+
 if subjectID == 0
     disp('Esperimento terminato!!')
     stop = true;
     return
 else
-    folderID = sprintf("calibration_data/subj_%d", subjectID);
+    folderID = sprintf("calibration_data/S%d", subjectID);
     if exist(folderID, 'dir')
         overwrite = input('La cartella esiste già. Vuoi sovrascrivere? (1 = si, 0 = no): ');
         if overwrite == 1
+            rmdir(folderID, 's')
+            mkdir(folderID)
             fprintf("Partecipante %d sovrascritto!", subjectID)
         elseif overwrite == 0
             disp('Esperimento terminato!!')
