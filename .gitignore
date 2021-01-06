@@ -3,6 +3,10 @@
 # Windows default autosave extension
 *.asv
 
+# Windows Hidden Files
+
+desktop.ini
+
 # OSX / *nix default autosave extension
 *.m~
 
