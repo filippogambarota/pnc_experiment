@@ -395,46 +395,17 @@ ShowCursor();
 
 final_noise = PAL_AMUD_analyzeUD(staircase); % compute the final estimation
 
-%% Backup Session
+%% Saving Data
 
-save(sprintf("calibration_data/subj_%d/backup_session_subj%d", subjectID, subjectID)) %backup the entire session
-
-%% Experiment Table
-
-trials = (1:trial)'; %create a trials vec
-noise_est = repmat(final_noise, [height(exp_table) 1]); % create a vec with final estimation
-trial_type_table = exp_table.trial_type;
-
-datatable = table(trials, id_subj, noise_level, resp_visibility, noise_est, trial_type_table, emotion_trial); %create the table with all data
-savefilename = sprintf('calibration_data/subj_%d/datatable_subj_%d.mat', subjectID, subjectID);
-save(savefilename, "datatable")
-
-%% Struct with all data
-
-all_data.datatable = datatable; %datatable
-all_data.seed = seed; %random seed
-all_data.staircase = staircase; %staircase object
-all_data.exp_table = exp_table; %exp table
-
-save(savefilename, "all_data")
-
-%% TXT files
-
-exp_table(:, "image") = [];
-datatable_temp = [datatable, exp_table];
-
-if ~exist("calibration_data\csv", 'dir')
-    mkdir("calibration_data\csv")
-end
-
-savefilename = sprintf('calibration_data/csv/subj_%d.txt', subjectID);
-writetable(datatable_temp, savefilename);
-
-disp("Dati salvati!")
+datastruct = savedata(exp_table, subjectID, noise_level, final_noise, resp_emotion, resp_visibility, staircase, trial, seed);
 
 %% Saving Eprime File
 
+eprimeData(subjectID, fear_stimuli, neutral_stimuli, alpha, final_noise)
 
+%% Backup Session
+
+save(sprintf("calibration_data/S%d/backup_session_S%d", subjectID, subjectID)) %backup the entire session
 
 %%%%% END %%%%%
 mess = ("Sessione terminata e dati salvati, è possibile chiudere MATLAB!");
