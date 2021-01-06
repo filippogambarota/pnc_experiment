@@ -1,8 +1,19 @@
 function [datastruct] = savedata(exp_table, subjectID, noise_level, final_noise, resp_emotion, resp_visibility, staircase, trial, seed)
-    %% Backup Session
     
-    save(sprintf("calibration_data/S%d/backup_session_S%d", subjectID, subjectID)) %backup the entire session
-
+    %% Creating Folders
+    
+    % Calibration data folder
+    
+    if ~exist("calibration_data", 'dir')
+        mkdir("calibration_data")
+    end
+    
+    % CSV folder
+    
+    if ~exist("calibration_data\csv", 'dir')
+        mkdir("calibration_data\csv")
+    end
+    
     %% Experiment Table
     
     exp_table.trial = (1:trial)'; %add trials
@@ -26,10 +37,6 @@ function [datastruct] = savedata(exp_table, subjectID, noise_level, final_noise,
 
     csv_table = exp_table;
     csv_table(:, "image") = [];
-
-    if ~exist("calibration_data\csv", 'dir')
-        mkdir("calibration_data\csv")
-    end
 
     savefilename = sprintf('calibration_data/csv/S%d.txt', subjectID);
     writetable(csv_table, savefilename);
