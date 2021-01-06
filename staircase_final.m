@@ -351,15 +351,15 @@ while ~staircase.stop
                 sca;
                 return
             elseif keyCode(neutral) 
-                emotion_trial(trial, 1) = 0;
+                emotion_trial = 0;
                 respToBeMade = false;
             elseif keyCode(fear) 
-                emotion_trial(trial, 1) = 1;
+                emotion_trial = 1;
                 respToBeMade = false;
             end
         end
     else
-        emotion_trial(trial, 1) = NaN;
+        emotion_trial = NaN;
     end
     
     Screen('Flip', w1);
@@ -376,10 +376,11 @@ while ~staircase.stop
     end
     
     % Save Data Trial-by-Trial
-    resp_visibility(trial, 1) = visibility;
+    resp_visibility(trial) = visibility;
     %resp_stair(trial, 1) = resp_trial;
-    id_subj(trial, 1) = subjectID;
-    noise_level(trial, 1) = noise;
+    id_subj(trial) = subjectID;
+    noise_level(trial) = noise;
+    resp_emotion(trial) = emotion_trial;
     
     % Intertrial Interval %
     WaitSecs(intertrial);
@@ -390,6 +391,10 @@ end
 Screen('Close', w1);
 Priority(0);
 ShowCursor();
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              END EXPERIMENT              %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Analysing Staircase
 
@@ -407,7 +412,6 @@ eprimeData(subjectID, fear_stimuli, neutral_stimuli, alpha, final_noise)
 
 save(sprintf("calibration_data/S%d/backup_session_S%d", subjectID, subjectID)) %backup the entire session
 
-%%%%% END %%%%%
 mess = ("Sessione terminata e dati salvati, è possibile chiudere MATLAB!");
 msgbox(mess)
 player = audioplayer(cos(1:0.1:3000), 44100); play(player)
