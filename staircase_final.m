@@ -45,13 +45,13 @@ KbName('UnifyKeyNames');
 
 escapeKey = KbName('escape'); % exit the experiment
 
-pas0 = KbName('c');
-pas1 = KbName('v');
-pas2 = KbName('b');
-pas3 = KbName('n');
-pas4 = KbName('m');
-fear = KbName('z');
-neutral = KbName('x');
+pas0 = KbName('1!');
+pas1 = KbName('2"');
+pas2 = KbName('3£');
+pas3 = KbName('4$');
+pas4 = KbName('5%');
+fear = KbName('m');
+neutral = KbName('z');
 start = KbName('space');
 
 RestrictKeysForKbCheck([pas0, pas1, pas2, pas3, pas4, fear, neutral, escapeKey, start]);
@@ -169,11 +169,11 @@ line2 = '\n\nQuesti volti ti verranno presentati velocemente e potrebbero essere
 line3 = '\n\nIl tuo compito consisterà nel riferire quale è stata la tua esperienza consapevole dell’immagine appena presentata.';
 line4 = '\n\n\n\nPer farlo ti chiediamo di rispondere dopo ogni immagine alla seguente domanda:';
 line5 = '\n\n\n\n"Per favore, scegli l’opzione che meglio descrive la tua esperienza dell’immagine"';
-line6 = '\n\n\nPremi 0 se non hai visto nessun volto';
-line7 = '\n\nPremi 1 se hai visto un volto, ma non hai visto la sua espressione facciale';
-line8 = '\n\nPremi 2 se hai visto un volto, ma hai avuto solo l’impressione di averne visto l’espressione';
-line9 = '\n\nPremi 3 se hai visto un volto e sei abbastanza sicuro/a di averne visto l’espressione';
-line10 = '\n\nPremi 4 se hai visto un volto e sei sicuro/a di averne visto l’espressione';
+line6 = '\n\n\nPremi 1 se non hai visto nessun volto';
+line7 = '\n\nPremi 2 se hai visto un volto, ma non hai visto la sua espressione facciale';
+line8 = '\n\nPremi 3 se hai visto un volto, ma hai avuto solo l’impressione di averne visto l’espressione';
+line9 = '\n\nPremi 4 se hai visto un volto e sei abbastanza sicuro/a di averne visto l’espressione';
+line10 = '\n\nPremi 5 se hai visto un volto e sei sicuro/a di averne visto l’espressione';
 
 DrawFormattedText(w1, [line1 line2 line3 line4 line5 line6 line7 line8 line9 line10], 'centerblock', 'center', white);%line6 line7 line8 line9 line10 line11 line12
 Screen('Flip', w1);
@@ -183,8 +183,8 @@ KbStrokeWait; % wait for keypress
 
 line1 = 'Ogniqualvolta risponderai di aver visto sia un volto che la sua espressione, ti verrà chiesto anche di indicare il tipo di espressione emotiva che hai riconosciuto.';
 line2 = '\n\nPer rispondere utilizza i tasti:';
-line3 = '\n\n\n\nPremi il tasto "z" se hai visto un volto spaventato';
-line4 = '\n\nPremi il tasto "x" se hai visto un volto neutro';
+line3 = '\n\nPremi il tasto "z" se hai visto un volto neutro';
+line4 = '\n\n\n\nPremi il tasto "m" se hai visto un volto spaventato';
 line5 = '\n\n\n\n\n È molto importante che tu sappia che non c’è una risposta giusta o sbagliata.';
 line6 = '\n\nLo scopo del compito non è indovinare la risposta esatta, ma solo riferire in maniera sincera cosa hai visto.';
 line7 = '\n\nPer questo, l’unica cosa che conta è che tu scelga l’opzione che meglio descrive l’esperienza che hai avuto.';
@@ -277,11 +277,11 @@ while ~staircase.stop
     
     % Awareness Question
     line1 = 'Per favore, scegli l’opzione che meglio descrive la tua esperienza dell’immagine';
-    line2 = '\n\n\n\nPremi 0 se non hai visto nessun volto';
-    line3 = '\n\nPremi 1 se hai visto un volto, ma non hai visto la sua espressione';
-    line4 = '\n\nPremi 2 se hai visto un volto, ma hai avuto solo l’impressione di averne visto l’espressione';
-    line5 = '\n\nPremi 3 se hai visto un volto e sei abbastanza sicuro/a di averne visto l’espressione';
-    line6 = '\n\nPremi 4 se hai visto un volto e sei sicuro/a di averne visto l’espressione';
+    line2 = '\n\n\n\nPremi 1 se non hai visto nessun volto';
+    line3 = '\n\nPremi 2 se hai visto un volto, ma non hai visto la sua espressione';
+    line4 = '\n\nPremi 3 se hai visto un volto, ma hai avuto solo l’impressione di averne visto l’espressione';
+    line5 = '\n\nPremi 4 se hai visto un volto e sei abbastanza sicuro/a di averne visto l’espressione';
+    line6 = '\n\nPremi 5 se hai visto un volto e sei sicuro/a di averne visto l’espressione';
     
     DrawFormattedText(w1, [line1, line2, line3, line4, line5 line6],'centerblock', 'center', 255); % 'center', 'center', 255);
     
@@ -332,8 +332,8 @@ while ~staircase.stop
         
         % Awareness Question
         line1 = 'Quale espressione facciale hai visto?';
-        line2 = '\n\n\n\nPremi il tasto "z" se hai visto un volto spaventato';
-        line3 = '\n\nPremi il tasto "x" se hai visto un volto neutro';
+        line2 = '\n\nPremi il tasto "z" se hai visto un volto neutro';
+        line3 = '\n\n\n\nPremi il tasto "m" se hai visto un volto spaventato';
         
         DrawFormattedText(w1, [line1, line2, line3],'centerblock', 'center', 255); % 'center', 'center', 255);
         
